@@ -1,0 +1,68 @@
+.favourite-item{
+    position: relative;
+    background: var(--font-color);
+    transition: all .2s ease-in-out;
+    text-decoration: none;
+}
+
+.favourite-item:hover{
+    color: var(--font-color);
+    background: var(--font-highlight);
+}
+.favourite-item:hover *{
+    color: var(--font-color)!important;
+}
+.favourite-item:hover .favourite-close i{
+    color: var(--secondary-color-hover)!important;
+}
+.favourite-close{
+    position: absolute;
+    right: 0px;
+    top: -10px;
+    height: 30px;
+    width: 30px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--secondary-color-hover);
+    border-radius: 50%;
+    box-shadow: 1px 1px 3px gray;
+    cursor: pointer;
+    background: white;
+}
+
+.custom-show-detail{
+    background: linear-gradient(to top, rgb(73, 39, 147) 20%, #36363600 100%);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+}
+
+.broadcump-banner{
+    background: transparent!important;
+}
+.subscription-card{
+    border: 1px solid var(--font-highlight);
+}
+.subscription-card .card-header{
+    background: var(--font-highlight);
+    color: var(--font-color)
+}
+.share{
+    display: flex;
+    align-items: center;
+}
+.share-link{
+    font-size: 25px;
+    color: white;
+    margin:0 10px;
+}
+.share-icon{
+
+}
+
+.more-episode {
+
+}

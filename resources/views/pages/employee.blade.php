@@ -1,0 +1,11 @@
+@extends('layout.app')
+@section('broadcumb')
+    @include('component.broadcumb_demo')
+@endsection
+@section('main-content')
+    @include('component.employee.list')
+    @include('component.employee.salary_payment')
+    @include('component.employee.create')
+    @include('component.employee.update')
+    @include('component.employee.delete')
+@endsection

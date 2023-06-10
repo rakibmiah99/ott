@@ -1,0 +1,58 @@
+
+:root{
+    --background: #16121B;
+    --background-opacity: rgba(22, 18, 27, 0.9);
+    --font-color: #FFFFFF;
+    --font-highlight: #6b31af;
+    --rating: #FFC907FF;
+    --secondary-color: #5C5C5C;
+    --secondary-color-hover: #E43109;
+}
+
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+
+body{
+    background-color: var(--background-opacity);
+    font-family: 'Barlow', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--font-color)
+}
+
+.color-rating{
+    color: var(--rating);
+}
+
+.fw-100{
+    font-weight: 100;
+}
+.fw-200{
+    font-weight: 200;
+}
+.fw-300{
+    font-weight: 300;
+}
+.fw-400{
+    font-weight: 400;
+}
+.fw-500{
+    font-weight: 500;
+}
+.fw-600{
+    font-weight: 600;
+}
+
+.f-14{
+    font-size: 14px;
+}

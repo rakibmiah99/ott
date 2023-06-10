@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js" integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js" integrity="sha512-LUKzDoJKOLqnxGWWIBM4lzRBlxcva2ZTztO8bTcWPmDSpkErWx0bSP4pdsjNH8kiHAUPaT06UXcb+vOEZH+HpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="container-fluid">
+            <div class="row" id="products">
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- The Modal -->
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Product Information</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body" id="product-details">
+
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function  myFunc(){
+            await axios.get('https://dummyjson.com/products')
+            .then(function (response){
+                 let data = response.data;
+                 let products = data.products;
+                 products.forEach(function (item){
+                    $('#products').append(`
+                        <div class="col-sm-4">
+                             <div class="card">
+                                <div class="card-body">
+                                    <img class="img-fluid" src="${item.thumbnail}">
+                                    <h6 class="card-header">${item.title}</h6>
+                                    <p>${item.description}</p>
+                                    <p>Price: ${item.price}TK</p>
+                                    <p>Discount: ${item.discountPercentage}%</p>
+                                    <div class="d-flex">
+                                        <button product-id="${item.id}" data-bs-toggle="modal" data-bs-target="#myModal" class="btn details-btn btn-outline-secondary">Details</button>
+                                        <button class="btn btn-outline-primary">Add To Cart</button>
+                                        <button class="btn btn-outline-success">Order Now</button>
+                                    </div>
+                                </div>
+                             </div>
+                         </div>
+                    `)
+                 })
+            })
+            .catch(function (error){
+                console.log(error);
+            })
+            //
+        }
+
+        myFunc();
+
+
+
+        $('#products').on('click', '.details-btn', function (){
+            let product_id = $(this).attr('product-id')
+            axios.get('https://dummyjson.com/products/'+product_id)
+            .then(function (response){
+                let data = response.data;
+                let product_details = $('#product-details');
+                product_details.empty();
+
+                product_details.append(`
+                    <h1>${data.title}</h1>
+                `)
+
+                for(let i =0; i < data.images.length; i ++){
+                    let image = data.images[i];
+                    product_details.append(`
+                        <img src="${image}" class="img-fluid">
+                    `)
+                }
+            })
+            .catch(function (error){
+
+            })
+        })
+
+
+    </script>
+</body>
+</html>
