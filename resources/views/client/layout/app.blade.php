@@ -16,6 +16,7 @@
     <link href="{{asset('client_assets/css/utility.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('client_assets/css/style.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('client_assets/css/from-template.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('client_assets/css/jibon.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('client_assets/css/responsive.css')}}" rel="stylesheet" type="text/css">
     @stack('css')
 
