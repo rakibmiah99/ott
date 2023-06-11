@@ -31,8 +31,6 @@
 
     })
 
-
-
     function FeatureItem(el, item){
         let redirect_to_play = "{{route('client.movie')}}/"+item.name;
         el.prepend(`
