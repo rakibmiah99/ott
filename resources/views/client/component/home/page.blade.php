@@ -56,10 +56,10 @@
                                         </span>
                                         <span class="hour me-4">
                                             <i class="bi bi-eye me-2"></i>
-                                            <span>21.3K views</span>
+                                            <span>20.3K views</span>
                                         </span>
                                     </div>
-                                    <h3 class="mt-2">WEIGHTLIFTING</h3>
+                                    <h3 class="mt-2">SAHOS</h3>
                                 </div>
                             </div>
                         </div>

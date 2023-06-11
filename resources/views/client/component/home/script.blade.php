@@ -50,7 +50,7 @@
                                         <span class="imdb me-2">IMDB</span> ${item.imdb != "" ? item.imdb : "-" }
                                     </div>
                                     <p class="pt-4 m-0">2019 - Drama Returning Series</p>
-                                    <p class="streaming pt-4">STREAMING NOW</p>
+                                    <p class="streaming pt-4 ">STREAMING NOW</p>
                                     <p class="feature-movie-name text-uppercase">${item.display_name}</p>
                                     <div>${item.description}</div>
                                     <a href="${redirect_to_play}" class="btn mt-2 btn-highlight text-uppercase">
@@ -61,16 +61,16 @@
                                 <div class="col-5 ps-3 d-lg-block d-none">
                                     <div class="d-flex align-items-end" style="height: 100%">
                                         <div class="d-flex w-100 align-items-center">
-                                            <img src="client_assets/img/Base.png" style="object-fit: cover;height: 250px;width: 200px">
+                                            <img src="client_assets/img/Base.png" style="object-fit: cover; height: 320px; width: 240px">
                                             <div class="play-next">
-                                                <p class="mb-1 f-14 " style="opacity: 0.6">Play Next</p>
+                                                <p class="mb-1 f-14 " style="opacity: 0.8">Play Next</p>
                                                 <div class="d-flex justify-content-between align-items-center">
-                                                    <h6 class="fw-bold m-0">KAISER <br> STREAMING NOW</h6>
+                                                    <h6 class="fw-bold m-0 pe-2 py-1">KAISER <br> STREAMING NOW</h6>
                                                     <a class="play-next-btn" href="#">
                                                         <i class="bi bi-arrow-right"></i>
                                                     </a>
                                                 </div>
-                                                <p class="m-0 mt-1 f-14" style="opacity: 0.6">90 min</p>
+                                                <p class="m-0 mt-1 f-14" style="opacity: 0.7">90 min</p>
                                             </div>
                                         </div>
                                     </div>
