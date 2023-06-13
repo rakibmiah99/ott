@@ -48,7 +48,7 @@
                                         <span class="imdb me-2">IMDB</span> ${item.imdb != "" ? item.imdb : "-" }
                                     </div>
                                     <p class="pt-4 m-0">2019 - Drama Returning Series</p>
-                                    <p class="streaming pt-4 ">STREAMING NOW</p>
+                                    <p class="streaming mb-0 mb-md-1">STREAMING NOW</p>
                                     <p class="feature-movie-name text-uppercase">${item.display_name}</p>
                                     <div>${item.description}</div>
                                     <a href="${redirect_to_play}" class="btn mt-2 btn-highlight text-uppercase">

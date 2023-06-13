@@ -22,6 +22,16 @@
         font-size: 12px;
         padding: 4px 8px;
     }
+
+    .owl-next,
+    .owl-prev {
+        display: none;
+    }
+
+    .footer-style {
+        text-align: center;
+    }
+
 }
 
 /*// Small devices (landscape phones, less than 768px)*/
@@ -35,12 +45,11 @@
     }
 
     .streaming {
-        font-size: 35px;
-       
+        font-size: 30px;
     }
 
     .feature-movie-name {
-        font-size: 40px;
+        font-size: 30px;
         line-height: 1;
     }
 
@@ -56,6 +65,7 @@
     #from-top {
         top: 570px;
     }
+
 }
 
 /*// Medium devices (tablets, less than 992px)*/
@@ -72,6 +82,15 @@
 
     #top-menu .logo h2 {
         font-size: 20px;
+    }
+
+    .owl-next,
+    .owl-prev {
+        font-size: 45px;
+        margin-top: -270px;
+        z-index: 999;
+        color: var(--secondary-color-hover);
+        font-weight: 700;
     }
 }
 

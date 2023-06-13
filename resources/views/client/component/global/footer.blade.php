@@ -1,13 +1,13 @@
 <div class="home-categories" id="footer">
     <div class="container-lg overflow-hidden">
-        <div class="row">
+        <div class="row footer-style">
             <div class="col-xl-4 col-12 col-md-12">
                 <div class="p-3">
                     <h3 class="fw-bold"><span style="color: #7020C4;">BONG</span>PLAY</h3>
                     <p>Lorem ipsum dolor sit amet, consec tetur adipis cing elit, sed do eiusmod tempor incididunt ut labore et.</p>
                 </div>
             </div>
-            <div class="col-xl-2 col-12 col-md-4">
+            <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-12">
                 <div class="p-3">
                     <h4>Pages</h4>
                     <ul class="nav flex-column">
@@ -32,7 +32,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-xl-3 col-12 col-md-4">
+            <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-12">
                 <div class="p-3">
                     <h4>Legal</h4>
                     <ul class="nav flex-column">
@@ -51,7 +51,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-xl-3 col-12 col-md-4">
+            <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6 col-12">
                 <div class="p-3">
                     <h4>Talk To Us</h4>
                     <ul class="nav flex-column">

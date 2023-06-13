@@ -203,7 +203,7 @@
 
 .owl-next,
 .owl-prev {
-    font-size: 80px;
+    font-size: 60px;
     margin-top: -280px;
     z-index: 999;
     color: var(--secondary-color-hover);
@@ -236,7 +236,6 @@
 }
 
 #footer .nav-link {
-    padding-left: 0;
     color: var(--font-color)
 }
 
@@ -308,7 +307,7 @@
     text-align: center;
     text-transform: capitalize;
     padding: 2px;
-    left: -3px;
+    left: -.5px;
     font-size: 10px;
 }
 
