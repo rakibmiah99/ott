@@ -238,7 +238,13 @@
 #footer .nav-link {
     color: var(--font-color)
 }
-
+#footer h4{
+    border-bottom: 3px solid white;
+    padding-bottom: 1px;
+}
+#footer h4:hover {
+    border-bottom: 3px solid rgb(139, 10, 214);
+}
 .divider hr {
     background: black;
     height: 2px;
