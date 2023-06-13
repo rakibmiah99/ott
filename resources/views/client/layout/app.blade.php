@@ -71,36 +71,13 @@
 
 
             $("#based-on-watch").owlCarousel({
-                items: 4,
-                // stagePadding: '5px',
-                autoWidth: false,
-                nav: true,
-                navText: [`<i class="bi bi-chevron-compact-left"></i>`, `<i class="bi bi-chevron-compact-right"></i>`],
-                navElement: 'div',
-                dots: true,
-                autoplay: false,
-                autoplayHoverPause: true,
-                responsive: {
-                    0: {
-                        items: 1
-                    },
-                    // breakpoint from 480 up
-                    480: {
-                        items: 2
-                    },
-                    // breakpoint from 768 up
-                    768: {
-                        items: 4
-                    }
-
-                }
+                items: 3,
             });
 
         });
 
 
-        <
-        !--responsive js-- >
+        <!--responsive js-->
         $(window).on('scroll', function() {
             let top = window.scrollY;
             if (top > 200) {

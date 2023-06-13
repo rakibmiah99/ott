@@ -67,8 +67,8 @@
     letter-spacing: 3px;
     line-height: 50px;
     -webkit-text-fill-color: #6b31af;
-    -webkit-text-stroke: 2px;
-    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke: 1px;
+    -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: currentcolor;
     -webkit-text-stroke-color: #f7f7f7;
     text-shadow: 3px 3px #42176c;
@@ -108,9 +108,12 @@
     background: var(--font-highlight);
     /*height: 125px;*/
     padding: 10px 15px;
+    opacity: .9;
     width: 100% !important;
 }
-
+.play-next:hover {
+    opacity: 1;
+}
 .play-next-btn {
     height: 40px;
     width: 40px;

@@ -9,7 +9,7 @@
             </div>
             <div class="col-xl-2 col-12 col-md-4">
                 <div class="p-3">
-                    <h4>PAGES</h4>
+                    <h4>Pages</h4>
                     <ul class="nav flex-column">
                         <li class="nav-item">
                             <a href="#" class="nav-link">Home</a>
@@ -34,7 +34,7 @@
             </div>
             <div class="col-xl-3 col-12 col-md-4">
                 <div class="p-3">
-                    <h4>LEGAL</h4>
+                    <h4>Legal</h4>
                     <ul class="nav flex-column">
                         <li class="nav-item">
                             <a href="#" class="nav-link">Privacy Policy</a>
@@ -53,7 +53,7 @@
             </div>
             <div class="col-xl-3 col-12 col-md-4">
                 <div class="p-3">
-                    <h4>TALK TO US</h4>
+                    <h4>Talk To Us</h4>
                     <ul class="nav flex-column">
                         <li class="nav-item">
                             <a href="#" class="nav-link">support@bongplay.com</a>

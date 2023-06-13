@@ -60,7 +60,7 @@
                                     <div class="d-flex align-items-end" style="height: 100%">
                                         <div class="d-flex w-100 align-items-center">
                                             <img src="client_assets/img/Base.png" style="object-fit: cover; height: 320px; width: 240px">
-                                            <div class="play-next">
+                                            <div class="play-next rounded-end">
                                                 <p class="mb-1 f-14 " style="opacity: 0.8">Play Next</p>
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <h6 class="fw-bold m-0 pe-2 py-1">KAISER <br> STREAMING NOW</h6>
