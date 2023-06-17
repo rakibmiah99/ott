@@ -1,38 +1,38 @@
 <script>
     client.get('{{route('home.load.first')}}')
-    .then(function (response){
-        if(response.status === 200){
-            let data = response.data;
-            // let menu = data.menu;
-            let feature = data.feature;
-            let home_categories = data.home_categories;
+        .then(function(response) {
+            if (response.status === 200) {
+                let data = response.data;
+                // let menu = data.menu;
+                let feature = data.feature;
+                let home_categories = data.home_categories;
 
-            let feature_el = $('#carousel-area');
-            feature_el.empty();
-            feature.forEach(function(item){
-                FeatureItem(feature_el, item)
-            })
-            $("#carousel-area").owlCarousel({
-                items: 1,
-                autoPlay: true
-            });
+                let feature_el = $('#carousel-area');
+                feature_el.empty();
+                feature.forEach(function(item) {
+                    FeatureItem(feature_el, item)
+                })
+                $("#carousel-area").owlCarousel({
+                    items: 1,
+                    autoPlay: true
+                });
 
-            //home categories
-            let home_cat_el =$('#dynamic-home-category');
-            home_cat_el.empty();
-            home_categories.forEach(function (item){
-                HomeCatItem(home_cat_el, item)
-            })
+                //home categories
+                let home_cat_el = $('#dynamic-home-category');
+                home_cat_el.empty();
+                home_categories.forEach(function(item) {
+                    HomeCatItem(home_cat_el, item)
+                })
 
 
-        }
-    })
-    .catch(function (error){
+            }
+        })
+        .catch(function(error) {
 
-    })
+        })
 
-    function FeatureItem(el, item){
-        let redirect_to_play = "{{route('client.movie')}}/"+item.name;
+    function FeatureItem(el, item) {
+        let redirect_to_play = "{{route('client.movie')}}/" + item.name;
         el.prepend(`
             <div class="feature-carousel-item ">
                 <div style="opacity: .6;width: 100vw;height: 650px;" class="bg-white <!--position-absolute-->">
@@ -58,8 +58,8 @@
                                 </div>
                                 <div class="col-5 ps-3 d-lg-block d-none">
                                     <div class="d-flex align-items-end" style="height: 100%">
-                                        <div class="d-flex w-100 align-items-center">
-                                            <img src="client_assets/img/Base.png" style="object-fit: cover; height: 320px; width: 240px">
+                                        <div class="play-next-div d-flex w-100 align-items-center ">
+                                            <img src="client_assets/img/Base.png">
                                             <div class="play-next rounded-end">
                                                 <p class="mb-1 f-14 " style="opacity: 0.8">Play Next</p>
                                                 <div class="d-flex justify-content-between align-items-center">
@@ -81,7 +81,7 @@
         `)
     }
 
-    function HomeCatItem(el, item){
+    function HomeCatItem(el, item) {
         let template = `
         <div class="home-categories">
             <div class="container-lg overflow-hidden">
@@ -90,8 +90,8 @@
                 <div class="owl-carousel" id="${item.name}">
         `;
 
-        item.movies.forEach(function(movie){
-            let redirect_to_play = "{{route('client.movie')}}/"+movie.name;
+        item.movies.forEach(function(movie) {
+            let redirect_to_play = "{{route('client.movie')}}/" + movie.name;
             template += `
                     <a href="${redirect_to_play}" class="home-categories-item">
                         <div class="home-categories-image rounded-2 overflow-hidden" >
@@ -128,32 +128,32 @@
         el.append(template);
 
 
-        $('#'+item.name).owlCarousel({
+        $('#' + item.name).owlCarousel({
             items: 6,
             // stagePadding: '5px',
             autoWidth: false,
             nav: true,
-            navText: [`<i class="bi bi-chevron-compact-left"></i>`,`<i class="bi bi-chevron-compact-right"></i>`],
+            navText: [`<i class="bi bi-chevron-compact-left"></i>`, `<i class="bi bi-chevron-compact-right"></i>`],
             navElement: 'div',
             dots: true,
             autoplay: false,
             autoplayHoverPause: true,
-            responsive:{
-                0 : {
+            responsive: {
+                0: {
                     items: 1
                 },
                 // breakpoint from 480 up
-                480 : {
+                480: {
                     items: 2
                 },
                 // breakpoint from 768 up
-                768 : {
+                768: {
                     items: 3
                 },
-                992 : {
+                992: {
                     items: 4
                 },
-                1200 : {
+                1200: {
                     items: 5
                 }
 
@@ -165,42 +165,39 @@
     $('#dynamic-home-category').on('click', '.favourite-btn', AddOrRemoveFavourite);
 
 
-    async function AddOrRemoveFavourite(){
+    async function AddOrRemoveFavourite() {
         let movie_name = $(this).attr('movie-name');
 
         let icon = "";
         let redirect_to_login = false;
-        if(movie_name == ""){
+        if (movie_name == "") {
             console.log('movie name can not found');
-        }
-        else{
+        } else {
             let form_data = new FormData();
             form_data.append('movie_name', movie_name)
             await client.post('/add-or-remove-to-favourite', form_data)
-            .then(function (response){
-                if(response.status === 200){
-                    let data = response.data;
-                    icon = data.icon;
-                    redirect_to_login = data.redirect_to_login;
-                }
-            })
-            .catch(function (error){
-                console.log(error)
-            })
+                .then(function(response) {
+                    if (response.status === 200) {
+                        let data = response.data;
+                        icon = data.icon;
+                        redirect_to_login = data.redirect_to_login;
+                    }
+                })
+                .catch(function(error) {
+                    console.log(error)
+                })
         }
 
 
-        if(redirect_to_login == true){
-            window.location.href = home_url+"/account";
+        if (redirect_to_login == true) {
+            window.location.href = home_url + "/account";
         }
 
-        if(icon == "add"){
+        if (icon == "add") {
             $(this).children().first().addClass('text-warning');
-        }
-        else if(icon == "remove"){
+        } else if (icon == "remove") {
             $(this).children().first().removeClass('text-warning');
         }
 
     }
-
 </script>

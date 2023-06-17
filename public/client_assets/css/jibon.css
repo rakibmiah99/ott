@@ -1,0 +1,5 @@
+.play-next-div img {
+    object-fit: cover;
+    width: 240px !important;
+    height: 320px;
+}
