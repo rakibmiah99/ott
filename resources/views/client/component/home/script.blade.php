@@ -6,7 +6,6 @@
                 // let menu = data.menu;
                 let feature = data.feature;
                 let home_categories = data.home_categories;
-
                 let feature_el = $('#carousel-area');
                 feature_el.empty();
                 feature.forEach(function(item) {
