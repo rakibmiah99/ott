@@ -34,9 +34,8 @@
         let redirect_to_play = "{{route('client.movie')}}/" + item.name;
         el.prepend(`
             <div class="feature-carousel-item ">
-                <div style="opacity: .6;width: 100vw;height: 650px;" class="bg-white <!--position-absolute-->">
-                    <img src="${item.banner}" style="height: 100%;object-fit: cover;width: 100%"  class="img-fluid">
-                     <div class="carousel-gradient top-0"></div>
+                <div class="<!--position-absolute--> banner-style">
+                    <img src="${item.banner}" style="opacity: .5; height: 100%;object-fit: cover;width: 100%">
                 </div>
                 <div class="container-lg  ">
                     <div class="feature-item-content">

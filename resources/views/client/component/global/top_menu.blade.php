@@ -2,7 +2,7 @@
     <div class="container-fluiddd">
         <div class="d-flex justify-content-between align-items-center pe-5 ps-5" id="top-menu-items">
             <div class="menu">
-                <button  class="btn menu-btn nav-link p-2" style="font-size: 20px" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
+                <button class="btn menu-btn nav-link p-2" style="font-size: 20px" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
                     <i class="bi bi-list"></i>
                 </button>
                 <ul class="nav" id="left-nav">
@@ -48,21 +48,20 @@
 
 <script>
     client.get('/menu')
-        .then(function (response){
-            if(response.status === 200){
+        .then(function(response) {
+            if (response.status === 200) {
                 let data = response.data;
                 let menu = data.menu;
                 let subscription_visibility = data.subscription_visibility;
                 let user = data.user;
 
-                if(subscription_visibility == false){
+                if (subscription_visibility == false) {
                     $('#subscription_menu_item').remove();
                 }
 
-                if(user == "" || user == null){
+                if (user == "" || user == null) {
                     loginView();
-                }
-                else{
+                } else {
                     profileView(user);
                 }
 
@@ -75,8 +74,8 @@
                 let sidebar_nav = $('#sidebar-nav');
                 left_nav_el.empty();
                 sidebar_nav.empty();
-                menu.forEach(function (item){
-                    if(item.sub_category.length > 0){
+                menu.forEach(function(item) {
+                    if (item.sub_category.length > 0) {
                         let sidebar_drop = `<li class="nav-item">
                                         <a class="nav-link dropdown-nav-btn" data-bs-toggle="collapse" href="#${item.name}">${item.display_name} &nbsp;&nbsp;<i class="bi bi-chevron-down"></i></a>
                                         <ul  id="${item.name}" class="collapse nav dropdown-nav flex-column">
@@ -85,9 +84,9 @@
                                     <div class="dropdown">
                                     <a class="nav-link dropdown-toggle fw-400" href="#" data-bs-toggle="dropdown">${item.display_name}</a>
                                     <ul class="dropdown-menu">`
-                        item.sub_category.forEach(function(sub_item){
-                            dropdown +=  `<li><a class="dropdown-item" href="#">${sub_item.display_name}</a></li>`
-                            sidebar_drop+= `<li class="nav-item">
+                        item.sub_category.forEach(function(sub_item) {
+                            dropdown += `<li><a class="dropdown-item" href="#">${sub_item.display_name}</a></li>`
+                            sidebar_drop += `<li class="nav-item">
                                             <a class="nav-link" href="#">${sub_item.display_name}</a>
                                             </li>`
                         })
@@ -95,14 +94,13 @@
                         dropdown += `</ul>
                                      </div>
                                      </li>`;
-                        sidebar_drop+= `
+                        sidebar_drop += `
                                         </ul>
                                         </li>
                                         `
                         left_nav_el.append(dropdown)
                         sidebar_nav.append(sidebar_drop)
-                    }
-                    else{
+                    } else {
                         left_nav_el.append(`
                         <li class="nav-item">
                             <a class="nav-link fw-400" href="#">${item.display_name}</a>
@@ -118,14 +116,14 @@
                 //End Menu
             }
         })
-        .catch(function (error){
+        .catch(function(error) {
 
         })
 
 
 
 
-    function loginView(){
+    function loginView() {
         let page_link = "{{route('account')}}";
         $('#auth_menu').append(`
                 <a class="nav-link fw-400" href="${page_link}">
@@ -134,7 +132,7 @@
             `)
     }
 
-    function profileView(user){
+    function profileView(user) {
         $('#auth_menu').append(`
                 <div class="dropdown">
                     <a class="nav-link dropdown-toggle fw-400" href="#" data-bs-toggle="dropdown">${(user.first_name == "" || user.first_name == null) ? 'user' : user.first_name}</a>
@@ -160,14 +158,9 @@
             `);
     }
 
-    $('#auth_menu').on('click', '#logout-btn', function (e){
+    $('#auth_menu').on('click', '#logout-btn', function(e) {
 
         e.preventDefault();
         logout();
     })
-
-
-
-
 </script>
-

@@ -92,6 +92,10 @@
         color: var(--secondary-color-hover);
         font-weight: 700;
     }
+
+    .episode-description h3 {
+        font-size: 20px;
+    }
 }
 
 /*// Large devices (desktops, less than 1200px)*/
