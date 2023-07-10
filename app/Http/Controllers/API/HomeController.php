@@ -22,11 +22,6 @@ class HomeController extends Controller
     }
 
     function Page(){
-
-//        DB::table('movies')->update([
-//            'tumbnail'=>'uploads/movies/2023/Syndicate/thm1688835837.jpeg'
-//        ]);
-
         return view('client.component.home.page');
     }
 
