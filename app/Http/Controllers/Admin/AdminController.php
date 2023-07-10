@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
+
     function LoginPage(){
         return view('pages.login');
     }

@@ -54,7 +54,3 @@ Route::middleware('admin_auth_web')->prefix('admin')->group(function (){
     Route::get('/feature-movies', [FeatureMoviesController::class, 'Page'])->name('admin.feature.movie');
 });
 
-
-
-
-

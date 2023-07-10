@@ -22,7 +22,7 @@ class MoviesPartController extends Controller
 {
     public function __construct()
     {
-        $this->path = env('');
+//        $this->path = env('');
     }
 
     function Page(Request $request){
