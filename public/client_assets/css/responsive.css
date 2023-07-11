@@ -65,7 +65,6 @@
     #from-top {
         top: 570px;
     }
-
 }
 
 /*// Medium devices (tablets, less than 992px)*/
@@ -103,3 +102,9 @@
 
 /*// X-Large devices (large desktops, less than 1400px)*/
 @media (max-width: 1399.98px) {}
+@media (max-width: 990px) {
+    .owl-next,
+    .owl-prev{
+        display: none !important;
+    }
+}

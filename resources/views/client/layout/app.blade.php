@@ -71,7 +71,26 @@
 
 
             $("#based-on-watch").owlCarousel({
-                items: 3,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    // breakpoint from 480 up
+                    480: {
+                        items: 2
+                    },
+                    // breakpoint from 768 up
+                    768: {
+                        items: 3
+                    },
+                    992: {
+                        items: 3
+                    },
+                    1200: {
+                        items: 3
+                    }
+
+                }
             });
 
         });

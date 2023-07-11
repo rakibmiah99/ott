@@ -15,6 +15,7 @@
         <div class="container-lg overflow-hidden">
             <h4 class="text-uppercase mb-4 mb-4 card-title">Based On Watch</h4>
             <div class="owl-carousel" id="based-on-watch">
+
                 <a href="#" class="me-3 text-white">
                     <div class="position-relative">
                         <div class="position-relative">
@@ -90,6 +91,7 @@
                         </div>
                     </div>
                 </a>
+
             </div>
         </div>
     </div>

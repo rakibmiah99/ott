@@ -17,8 +17,11 @@ class SearchController extends Controller
     const movies_for_search_view = 'movies_for_search';
     function Search(Request $request){
         $movie = $request->get('movie');
+        if ($movie==""){
+            return [];
+        }
         $result = DB::table(self::movies_for_search_view)->
-        where('display_name', 'like', "%$movie%")->
+        where('display_name', 'like', '%'.$movie.'%')->limit(10)->
         get([
             'movies_name',
             'name',

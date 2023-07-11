@@ -199,16 +199,26 @@
 .owl-nav {
     display: flex;
     justify-content: space-between;
+    position: absolute;
+    bottom: 50%;
+    width: 100%;
+}
+
+#bong-tv-original{
+    position: relative;
 }
 
 .owl-next,
 .owl-prev {
     font-size: 60px;
-    margin-top: -280px;
     z-index: 999;
+    /*margin-top: -280px;*/
     color: var(--secondary-color-hover);
     font-weight: 700;
+
+
 }
+
 
 #based-on-watch .owl-item {
     padding: 12px;
@@ -238,13 +248,15 @@
 #footer .nav-link {
     color: var(--font-color)
 }
-#footer h4{
-    border-bottom: 3px solid white;
-    padding-bottom: 1px;
-}
-#footer h4:hover {
-    border-bottom: 3px solid rgb(139, 10, 214);
-}
+
+/*#footer h4{*/
+/*    border-bottom: 3px solid white;*/
+/*    padding-bottom: 1px;*/
+/*}*/
+/*#footer h4:hover {*/
+/*    border-bottom: 3px solid rgb(139, 10, 214);*/
+/*}*/
+
 .divider hr {
     background: black;
     height: 2px;
@@ -319,4 +331,51 @@
 
 input[name=payment_method]:checked+img+.payment-gateway {
     display: block !important;
+}
+
+.home-categories  .card-title{
+    margin-top: 1.5rem !important;
+}
+
+.spinner-border{
+    display: block;
+    overflow: hidden;
+    z-index: 111111111111111111111111111111111;
+    border: 5px solid #444;
+    border-right-color: rgb(68, 68, 68);
+    border-right-color: #79797900;
+    margin: auto;
+}
+
+
+/*search-tag style*/
+.search-tag{
+    position: absolute;
+    top: 108%;
+    z-index: 1111111111111;
+    width: 100%;
+    background: #f4f4f4;
+    border: 1px solid #c7c5c98f;
+    border-radius: 0px;
+    display: block;
+}
+.wrrap-search ul{
+    list-style: none;
+    margin-right: 2rem;
+}
+.wrrap-search li{
+    padding: 10px 20px;
+    background: #e7e7e7;
+    margin: 10px 0px;
+}
+.wrrap-search li a{
+    text-decoration: none;
+    color: #fc843c;
+    font-size: 17px;
+    font-weight: bold;
+}
+.wrrap-search li button{
+    float: right;
+    font-size: 16px;
+    margin-top: 0;
 }
