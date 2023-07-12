@@ -349,33 +349,57 @@ input[name=payment_method]:checked+img+.payment-gateway {
 
 
 /*search-tag style*/
-.search-tag{
+.search-tag {
     position: absolute;
-    top: 108%;
+    top: 99%;
     z-index: 1111111111111;
     width: 100%;
-    background: #f4f4f4;
-    border: 1px solid #c7c5c98f;
+    background: #fff;
     border-radius: 0px;
     display: block;
+    border-top: 1px solid #fff;
+    box-shadow: 0px 7px 4px 2px #c0bcbc7d;
 }
 .wrrap-search ul{
     list-style: none;
-    margin-right: 2rem;
+    margin-left: 0 !important;
+    padding: 0;
 }
 .wrrap-search li{
     padding: 10px 20px;
-    background: #e7e7e7;
+    transition: 0.3s;
     margin: 10px 0px;
 }
-.wrrap-search li a{
-    text-decoration: none;
-    color: #fc843c;
-    font-size: 17px;
-    font-weight: bold;
+.wrrap-search li:hover{
+    background: #e7e7e7;
+}
+
+.wrrap-search li a {
+	text-decoration: none;
+	color: #8a8a8a;
+	font-size: 17px;
+	font-weight: bold;
+}
+.wrrap-search li i {
+    color: #716b6b;
+    font-weight: bolder;
+    font-size: 16px;
+    margin-right: 5px;
 }
 .wrrap-search li button{
     float: right;
     font-size: 16px;
     margin-top: 0;
+}
+
+#movie{
+    border: none !important;
+    box-shadow: 0px 0px 5px 2px #c0bcbc7d;
+}
+.form-control:focus {
+    border: none !important;
+    box-shadow: 0px 0px 5px 2px #c0bcbc7d !important;
+}
+.removeSearch {
+    z-index: 11111111111111111;
 }

@@ -9,15 +9,13 @@
                     <h2 class="m-0 text-uppercase"><span class="text-dark">Bong</span><span style="color: var(--font-highlight)">TV</span></h2>
                 </div>
                 <form action="" class="d-flex justify-content-center align-items-center" id="search-form" style="position: relative;width: 75%">
-                    <input type="text" id="movie" name="movie" class="form-control w-100 rounded-0 me-2">
+                    <input type="text" id="movie" name="movie" class="form-control w-100 rounded-0 me-2" placeholder="Search....">
                     <button type="submit" class="btn btn-secondary"><i class="bi bi-search"></i></button>
-                    <div class="search-tag">
+                    <div id="search-tag" class="search-tag d-none">
                         <div class="wrrap-search">
-                            <ul>
-                                <li><a href="">korean-i-am-not-a-robot-bangla</a><button type="button" class="btn-close" aria-label="Close"></button></li>
-                                <li><a href="">korean-i-am-not-a-robot-bangla</a><button type="button" class="btn-close" aria-label="Close"></button></li>
-                                <li><a href="">korean-i-am-not-a-robot-bangla</a><button type="button" class="btn-close" aria-label="Close"></button></li>
-                                <li><a href="">korean-i-am-not-a-robot-bangla</a><button type="button" class="btn-close" aria-label="Close"></button></li>
+                            <ul id="tag-li">
+
+                           
                             </ul>
                         </div>
                     </div>
@@ -46,17 +44,19 @@
     $('#search-form').on('submit', function (e){
         e.preventDefault();
         let data = $(this).serialize();
-
-
+        console.log(data);
         let searchVal =   JSON.parse(localStorage.getItem("search")) ?  JSON.parse(localStorage.getItem("search")) : [];
-        // search stroge
         let val = $('#movie').val();
-        let search = [val,...searchVal]
-        localStorage.setItem("search",JSON.stringify(search));
-        console.log(search)
-
-
-
+        // search stroge
+        if (val=="") {
+        }else{
+            var datas = JSON.parse(localStorage.getItem("search"));
+            if(datas.indexOf(val) === -1) {
+                let search = [val,...searchVal]
+                localStorage.setItem("search",JSON.stringify(search));
+            }
+        }
+        $('#search-tag').addClass('d-none');
         $('#search-item').html(loader)
         client.get('/search?'+data)
         .then(function (response){
@@ -79,17 +79,73 @@
         })
     })
 
+    function searchGet(search) {
+        $('#search-item').html(loader)
+        client.get('/search?movie='+search)
+        .then(function (response){
+            if(response.status === 200){
+                let data = response.data;
+                let el = $('#search-item');
+                el.empty();
+                if(data.length > 0){
+                    data.forEach(function(movie){
+                        SearchTemplate(el, movie)
+                    })
+                }
+                else{
+                    el.empty();
+                }
+            }
+        })
+        .catch(function (error){
+            console.log(error);
+        })
+    }
 
-    //
-    // var to_delete = "WLP003"
-    // //var datas = localStorage.getItem('datas');//parse it
-    // //suppose this is data
-    // var datas = ["WLP001", "WLP002", "WLP003", "WLP004", "WLP022"];
-    // var index = datas.indexOf(to_delete);//get index
-    // datas.splice(index, 1);//remove it
-    // console.log(datas)
-    // localStorage.setItem('datas', JSON.stringify(datas));//set again
-    //
+
+
+    $('#movie').click(function(){
+        $('#search-tag').removeClass('d-none');
+        loadSearch();
+    });
+
+
+    function loadSearch(){
+        $('#tag-li').html(" ")
+        var datas  = JSON.parse(localStorage.getItem("search")) ?  JSON.parse(localStorage.getItem("search")) : [];
+        $.each(datas, function(k, v) {
+            $('#tag-li').append(`<li class="search-text" data-val="${v}"><i class="bi bi-clock"></i> <a href=""  >${v}</a><button type="button" data-val="${v}" data-id="${k}" class="removeSearch btn-close" aria-label="Close"></button></li>`);
+        });
+    }
+
+    $('.modal-body').click(function(){
+        $('#search-tag').addClass('d-none')
+    });
+
+    $('.logo').click(function(){
+        $('#search-tag').addClass('d-none')
+    });
+
+    $(document).on('click','.removeSearch', function(){
+        let id = $(this).data('id');
+        let val = $(this).data('val');
+
+        var datas = JSON.parse(localStorage.getItem("search"));
+        var index = datas.indexOf(val);
+        datas.splice(index, 1);
+
+        localStorage.setItem("search",JSON.stringify(datas));
+        loadSearch();
+    });
+
+    $(document).on('click','.search-text', function(e){
+        e.preventDefault();
+        let val = $(this).data('val');
+        $('#search-tag').addClass('d-none')
+        $('#movie').val(val);
+        searchGet(val)
+    });
+
 
 
     function SearchTemplate(el, item){
