@@ -22,7 +22,8 @@
             <!-- Tab panes -->
             <div class="tab-content pt-4 pb-4">
                 <div class="tab-pane container active" id="login">
-                    <form id="login-form">
+                    <form id="login-form" style="position: relative">
+                        <div style="position: absolute;left: 50%;right: 50%;" class="loginloader  d-none spinner-border"role="status"> <span class="visually-hidden">Loading...</span></div>
                         <div class="input-group mb-3">
                             <span class="input-group-text bg-white">
                                 Mail

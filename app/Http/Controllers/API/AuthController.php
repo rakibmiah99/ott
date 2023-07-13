@@ -7,7 +7,8 @@ use App\Http\Controllers\ResponseController;
 use App\Models\OTP;
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use App\Mail\PostUserMail;
+use Mail;
 class AuthController extends Controller
 {
     function Page(){
@@ -21,14 +22,16 @@ class AuthController extends Controller
             return ResponseController::Reponse('User Found');
         }
         else{
+            $verification_code = rand(1000, 9999);
             User::insert([
                 'email' => $email
             ]);
             OTP::insert([
                'email' => $email,
                'request_for' => 'login',
-                'code' => '1234'
+                'code' => $verification_code
             ]);
+            Mail::to($email)->send(new PostUserMail($verification_code));
             return ResponseController::Reponse('User Created');
 //            return ResponseController::Reponse('you have no account. please signup', false);
         }

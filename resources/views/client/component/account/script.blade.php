@@ -1,12 +1,15 @@
 <script>
+     const  loader = `<div class="spinner-border"role="status"> <span class="visually-hidden">Loading...</span></div>`
     $('#login-form').on('submit', loginFunction)
     function loginFunction(e){
         e.preventDefault();
+        $('.loginloader').removeClass('d-none');
         let email = $('#login-form input[name=email]').val();
         let form_data = new FormData();
         form_data.append('email', email);
         client.post('/login', form_data)
         .then(function (response){
+            $('.loginloader').addClass('d-none');
             if(response.status === 200){
                 let data = response.data;
                 if(data.status == true){
@@ -22,6 +25,7 @@
             }
         })
         .catch(function (error){
+            $('.loginloader').addClass('d-none');
             console.log(error)
         })
     }

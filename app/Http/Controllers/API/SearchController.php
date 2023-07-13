@@ -5,7 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Auth;
 class SearchController extends Controller
 {
 
@@ -31,6 +31,17 @@ class SearchController extends Controller
             'length',
             'video_type_name',
         ]);
+
+        // insert search text
+        $text = array();
+        $text['text'] = $movie;
+        $text['ip'] = $request->ip();
+        if (Auth::guard('admin_auth')->user()) {
+            $text['user_id'] = Auth::guard('admin_auth')->user()->id;
+        }
+        DB::table('searchs')->insert($text);
         return $result;
     }
+
+   
 }

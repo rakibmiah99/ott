@@ -365,21 +365,37 @@ input[name=payment_method]:checked+img+.payment-gateway {
     margin-left: 0 !important;
     padding: 0;
 }
-.wrrap-search li{
-    padding: 10px 20px;
-    transition: 0.3s;
-    margin: 10px 0px;
+.wrrap-search li {
+	padding: 10px 20px;
+	transition: 0.3s;
+	margin: 10px 0px;
+	cursor: pointer;
+	display: flex;
 }
+ 
+
 .wrrap-search li:hover{
     background: #e7e7e7;
 }
+
+/* .wrrap-search li a {
+	text-decoration: none;
+	color: #8a8a8a;
+	font-size: 17px;
+	font-weight: bold;
+} */
 
 .wrrap-search li a {
 	text-decoration: none;
 	color: #8a8a8a;
 	font-size: 17px;
 	font-weight: bold;
+	width: 78%;
+	display: block;
+	float: left;
 }
+
+
 .wrrap-search li i {
     color: #716b6b;
     font-weight: bolder;
@@ -401,5 +417,5 @@ input[name=payment_method]:checked+img+.payment-gateway {
     box-shadow: 0px 0px 5px 2px #c0bcbc7d !important;
 }
 .removeSearch {
-    z-index: 11111111111111111;
+ 
 }

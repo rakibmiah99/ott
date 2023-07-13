@@ -9,13 +9,11 @@
                     <h2 class="m-0 text-uppercase"><span class="text-dark">Bong</span><span style="color: var(--font-highlight)">TV</span></h2>
                 </div>
                 <form action="" class="d-flex justify-content-center align-items-center" id="search-form" style="position: relative;width: 75%">
-                    <input type="text" id="movie" name="movie" class="form-control w-100 rounded-0 me-2" placeholder="Search....">
+                    <input type="text" id="movie" name="movie" class="form-control w-100 rounded-0 me-2" autocomplete="off" placeholder="Search....">
                     <button type="submit" class="btn btn-secondary"><i class="bi bi-search"></i></button>
                     <div id="search-tag" class="search-tag d-none">
                         <div class="wrrap-search">
                             <ul id="tag-li">
-
-                           
                             </ul>
                         </div>
                     </div>
@@ -102,19 +100,16 @@
         })
     }
 
-
-
     $('#movie').click(function(){
         $('#search-tag').removeClass('d-none');
         loadSearch();
     });
 
-
     function loadSearch(){
         $('#tag-li').html(" ")
         var datas  = JSON.parse(localStorage.getItem("search")) ?  JSON.parse(localStorage.getItem("search")) : [];
         $.each(datas, function(k, v) {
-            $('#tag-li').append(`<li class="search-text" data-val="${v}"><i class="bi bi-clock"></i> <a href=""  >${v}</a><button type="button" data-val="${v}" data-id="${k}" class="removeSearch btn-close" aria-label="Close"></button></li>`);
+            $('#tag-li').append(`<li><i class="bi bi-clock"></i> <a href="" class="search-text" data-val="${v}"  >${v}</a><button type="button" data-val="${v}" data-id="${k}" class="removeSearch btn-close" aria-label="Close"></button></li>`);
         });
     }
 
@@ -125,7 +120,6 @@
     $('.logo').click(function(){
         $('#search-tag').addClass('d-none')
     });
-
     $(document).on('click','.removeSearch', function(){
         let id = $(this).data('id');
         let val = $(this).data('val');
@@ -145,8 +139,6 @@
         $('#movie').val(val);
         searchGet(val)
     });
-
-
 
     function SearchTemplate(el, item){
         el.append(`
