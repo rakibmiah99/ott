@@ -42,14 +42,15 @@
     $('#search-form').on('submit', function (e){
         e.preventDefault();
         let data = $(this).serialize();
+        // localStorage.setItem("search",JSON.stringify([]));
         console.log(data);
         let searchVal =   JSON.parse(localStorage.getItem("search")) ?  JSON.parse(localStorage.getItem("search")) : [];
         let val = $('#movie').val();
         // search stroge
         if (val=="") {
         }else{
-            var datas = JSON.parse(localStorage.getItem("search"));
-            if(datas.indexOf(val) === -1) {
+            // var datas = JSON.parse(localStorage.getItem("search"));
+            if(searchVal.indexOf(val) === -1) {
                 let search = [val,...searchVal]
                 localStorage.setItem("search",JSON.stringify(search));
             }
