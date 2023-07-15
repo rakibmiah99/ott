@@ -19,6 +19,9 @@ use App\Http\Controllers\API\UserFavouriteController;
 use App\Http\Controllers\API\SubscriptionController as API_SubscriptionController;
 use App\Http\Controllers\API\MovieController as API_MovieController;
 use App\Http\Controllers\API\PaymentController;
+use App\Http\Controllers\SslCommerzPaymentController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +33,11 @@ use App\Http\Controllers\API\PaymentController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/test', [HomeController::class, 'test'])->name('test');
+
+
+
 
 Route::get('/', [HomeController::class, 'Page'])->name('user.home');
 Route::get('/account', [AuthController::class, 'Page'])->name('account');
@@ -54,3 +62,19 @@ Route::middleware('admin_auth_web')->prefix('admin')->group(function (){
     Route::get('/feature-movies', [FeatureMoviesController::class, 'Page'])->name('admin.feature.movie');
 });
 
+
+
+
+// SSLCOMMERZ Start
+Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
+Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
+
+Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
+Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
+
+Route::post('/success', [SslCommerzPaymentController::class, 'success']);
+Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
+Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
+
+Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
+//SSLCOMMERZ END

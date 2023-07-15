@@ -49,7 +49,6 @@
         // search stroge
         if (val=="") {
         }else{
-            // var datas = JSON.parse(localStorage.getItem("search"));
             if(searchVal.indexOf(val) === -1) {
                 let search = [val,...searchVal]
                 localStorage.setItem("search",JSON.stringify(search));

@@ -25,6 +25,10 @@ class HomeController extends Controller
         return view('client.component.home.page');
     }
 
+    function test(){
+        return view('welcome');
+    }
+
     function FirstLoad(Request $request){
 
         /*return auth('sanctum')->user();*/

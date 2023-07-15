@@ -1,4 +1,5 @@
 <!--OTP Modal-->
+
 <div class="modal" id="select-payment-method">
     <div class="modal-dialog modal-fullscreen modal-dialog-centered">
         <div class="modal-content" style="background: #b063d3e3;">
@@ -26,6 +27,49 @@
                             </div>
                             <p class="mt-3 mb-3 coupon-message" style="color: #8d0404"></p>
                             <div class="d-flex flex-column mt-3">
+
+
+
+
+
+                                <form method="POST" class="needs-validation" novalidate>
+                                    @csrf
+
+                                    <hr class="mb-4">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="same-address">
+                                        <input type="hidden" value="1200" name="amount" id="total_amount" required/>
+                                        <label class="custom-control-label" for="same-address">Shipping address is the same as my billing
+                                            address</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="save-info">
+                                        <label class="custom-control-label" for="save-info">Save this information for next time</label>
+                                    </div>
+                                    <hr class="mb-4">
+                                    <button class="btn btn-primary btn-lg btn-block" id="sslczPayBtn"
+                                            token="if you have any token validation"
+                                            postdata="your javascript arrays or objects which requires in backend"
+                                            order="If you already have the transaction generated for current order"
+                                            endpoint="{{ url('/pay-via-ajax') }}"> Pay Now
+                                    </button>
+                                </form>
+
+
+
+
+
+
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+
+
+
+
                                 <form id="bkash-form" method="post" action="{{route('user.payment')}}">
                                     @csrf
                                     <p class="mt-3">Bkash</p>
@@ -62,3 +106,14 @@
         </div>
     </div>
 </div>
+
+<script>
+    var obj = {};
+    obj.cus_name = "karim";
+    obj.cus_phone = "01797848064";
+    obj.cus_email = "test@gmail.com";
+    obj.cus_addr1 = "dhaka";
+    obj.amount = 500;
+    $('#sslczPayBtn').prop('postdata', obj);
+
+</script>
