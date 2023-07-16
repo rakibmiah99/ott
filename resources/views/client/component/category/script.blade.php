@@ -1,5 +1,5 @@
 <script>
-    client.get('{{route('home.load.first')}}')
+    client.get('{{route('category.load.first')}}')
         .then(function(response) {
             if (response.status === 200) {
                 let data = response.data;
@@ -17,7 +17,7 @@
                 });
 
                 //home categories
-                let home_cat_el = $('#dynamic-home-category');
+                let home_cat_el = $('#dynamic-category');
                 home_cat_el.empty();
                 home_categories.forEach(function(item) {
                     HomeCatItem(home_cat_el, item)
@@ -77,18 +77,19 @@
         `)
     }
 
+
+
+    
     function HomeCatItem(el, item) {
         let template = `
         <div class="home-categories">
             <div class="container-lg overflow-hidden">
                 <h4 class="text-uppercase mb-4 card-title">${item.display_name}</h4>
-
                 <div class="owl-carousel" id="${item.name}">
-        `;
-
-        item.movies.forEach(function(movie) {
-            let redirect_to_play = "{{route('client.movie')}}/" + movie.name;
-            template += `
+                `;
+                item.movies.forEach(function(movie) {
+                    let redirect_to_play = "{{route('client.movie')}}/" + movie.name;
+                    template += `
                     <a href="${redirect_to_play}" class="home-categories-item">
                         <div class="home-categories-image rounded-2 overflow-hidden" >
                             <img src="${movie.thumbnail}" class="img-fluidd" style="object-fit: cover; min-height: 200px;">
@@ -111,18 +112,16 @@
                         </div>
 
                         <div class="play-mode-banner">${movie.play_mode}</div>
-                    </a>
-            `
-        });
+                    </a>`
+                });
 
-        template += `
+                template += `
                 </div>
             </div>
         </div>
         `;
 
         el.append(template);
-
 
         $('#' + item.name).owlCarousel({
             items: 6,
@@ -152,18 +151,16 @@
                 1200: {
                     items: 4
                 }
-
             }
         })
-
     }
 
+
+
+
     $('#dynamic-home-category').on('click', '.favourite-btn', AddOrRemoveFavourite);
-
-
     async function AddOrRemoveFavourite() {
         let movie_name = $(this).attr('movie-name');
-
         let icon = "";
         let redirect_to_login = false;
         if (movie_name == "") {
@@ -183,8 +180,6 @@
                     console.log(error)
                 })
         }
-
-
         if (redirect_to_login == true) {
             window.location.href = home_url + "/account";
         }

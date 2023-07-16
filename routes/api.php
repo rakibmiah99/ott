@@ -18,6 +18,8 @@ use App\Http\Controllers\API\UserFavouriteController;
 use App\Http\Controllers\API\SearchController;
 use App\Http\Controllers\API\SubscriptionController as Client_Subscription;
 use App\Http\Controllers\API\MovieController as Client_MovieController;
+use App\Http\Controllers\API\CategoryController;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -42,6 +44,14 @@ Route::prefix('/home')->group(function (){
    Route::get('load-first', [HomeController::class, 'FirstLoad'])->name('home.load.first');
    Route::get('load-second', [HomeController::class, 'SecondLoad'])->name('home.load.second');
 });
+
+Route::prefix('/category')->group(function (){
+    Route::get('load-first', [CategoryController::class, 'FirstLoad'])->name('category.load.first');
+ });
+ 
+
+
+
 
 
 Route::post('/login', [AuthController::class, 'Login']);

@@ -19,6 +19,7 @@ use App\Http\Controllers\API\UserFavouriteController;
 use App\Http\Controllers\API\SubscriptionController as API_SubscriptionController;
 use App\Http\Controllers\API\MovieController as API_MovieController;
 use App\Http\Controllers\API\PaymentController;
+use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\SslCommerzPaymentController;
 
 
@@ -45,6 +46,12 @@ Route::get('/favourite', [UserFavouriteController::class, 'Page'])->name('user.f
 Route::get('/subscription', [API_SubscriptionController::class, 'Page'])->name('user.subscription');
 Route::post('/payment', [PaymentController::class, 'PaymentProcess'])->name('user.payment');
 Route::get('/movie/{name?}', [API_MovieController::class, 'Page'])->name('client.movie');
+
+// frontend category
+Route::get('/{name}', [CategoryController::class, 'CategoryPage'])->name('category.page');
+
+
+
 
 
 Route::get('admin/login', [AdminController::class, 'LoginPage'])->name('admin.login');

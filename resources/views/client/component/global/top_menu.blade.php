@@ -65,10 +65,6 @@
                     profileView(user);
                 }
 
-
-
-
-
                 //Menu
                 let left_nav_el = $('#left-nav');
                 let sidebar_nav = $('#sidebar-nav');
@@ -77,20 +73,19 @@
                 menu.forEach(function(item) {
                     if (item.sub_category.length > 0) {
                         let sidebar_drop = `<li class="nav-item">
-                                        <a class="nav-link dropdown-nav-btn" data-bs-toggle="collapse" href="#${item.name}">${item.display_name} &nbsp;&nbsp;<i class="bi bi-chevron-down"></i></a>
+                                        <a class="nav-link dropdown-nav-btn" data-bs-toggle="collapse" href="/${item.name}">${item.display_name} &nbsp;&nbsp;<i class="bi bi-chevron-down"></i></a>
                                         <ul  id="${item.name}" class="collapse nav dropdown-nav flex-column">
                                         `;
                         let dropdown = `<li class="nav-item">
                                     <div class="dropdown">
-                                    <a class="nav-link dropdown-toggle fw-400" href="#" data-bs-toggle="dropdown">${item.display_name}</a>
+                                    <a class="nav-link dropdown-toggle fw-400" href="/" data-bs-toggle="dropdown">${item.display_name}</a>
                                     <ul class="dropdown-menu">`
                         item.sub_category.forEach(function(sub_item) {
-                            dropdown += `<li><a class="dropdown-item" href="#">${sub_item.display_name}</a></li>`
+                            dropdown += `<li><a class="dropdown-item" href="/genre/${sub_item.name}">${sub_item.display_name}</a></li>`
                             sidebar_drop += `<li class="nav-item">
-                                            <a class="nav-link" href="#">${sub_item.display_name}</a>
+                                            <a class="nav-link" href="/genre/${sub_item.name}">${sub_item.display_name}</a>
                                             </li>`
                         })
-
                         dropdown += `</ul>
                                      </div>
                                      </li>`;
@@ -103,12 +98,12 @@
                     } else {
                         left_nav_el.append(`
                         <li class="nav-item">
-                            <a class="nav-link fw-400" href="#">${item.display_name}</a>
+                            <a class="nav-link fw-400" href="/${item.name}">${item.display_name}</a>
                         </li>
                     `);
                         sidebar_nav.append(`
                         <li class="nav-item">
-                            <a class="nav-link" href="#">${item.display_name}</a>
+                            <a class="nav-link" href="/${item.name}">${item.display_name}</a>
                         </li>
                     `)
                     }
