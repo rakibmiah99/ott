@@ -79,11 +79,15 @@
                         let dropdown = `<li class="nav-item">
                                     <div class="dropdown">
                                     <a class="nav-link dropdown-toggle fw-400" href="/" data-bs-toggle="dropdown">${item.display_name}</a>
-                                    <ul class="dropdown-menu">`
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="/category/${item.name}">All</a></li>
+                                        `;
                         item.sub_category.forEach(function(sub_item) {
-                            dropdown += `<li><a class="dropdown-item" href="/genre/${sub_item.name}">${sub_item.display_name}</a></li>`
+                            dropdown += `<li>
+                                            <a class="dropdown-item" href="/category/${item.name}/${sub_item.name}">${sub_item.display_name}</a>
+                                        </li>`
                             sidebar_drop += `<li class="nav-item">
-                                            <a class="nav-link" href="/genre/${sub_item.name}">${sub_item.display_name}</a>
+                                            <a class="nav-link" href="/category/${item.name}/${sub_item.name}">${sub_item.display_name}</a>
                                             </li>`
                         })
                         dropdown += `</ul>

@@ -37,22 +37,16 @@ use App\Http\Controllers\SslCommerzPaymentController;
 
 Route::get('/test', [HomeController::class, 'test'])->name('test');
 
-
-
-
 Route::get('/', [HomeController::class, 'Page'])->name('user.home');
 Route::get('/account', [AuthController::class, 'Page'])->name('account');
 Route::get('/favourite', [UserFavouriteController::class, 'Page'])->name('user.favourite');
 Route::get('/subscription', [API_SubscriptionController::class, 'Page'])->name('user.subscription');
 Route::post('/payment', [PaymentController::class, 'PaymentProcess'])->name('user.payment');
 Route::get('/movie/{name?}', [API_MovieController::class, 'Page'])->name('client.movie');
-
+Route::get('/category/{main}', [CategoryController::class, 'Page']);
+Route::get('/category/{main}/{sub}', [CategoryController::class, 'Page']);
 // frontend category
 Route::get('/{name}', [CategoryController::class, 'CategoryPage'])->name('category.page');
-
-
-
-
 
 Route::get('admin/login', [AdminController::class, 'LoginPage'])->name('admin.login');
 Route::middleware('admin_auth_web')->prefix('admin')->group(function (){

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Movie;
+use App\Models\SubCategories;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Table;
 use Illuminate\Support\Facades\Auth;
@@ -16,14 +18,36 @@ class CategoryController extends Controller
         $this->path = env('/');
     }
     //
-    function CategoryPage(){
+    function Page(Request $request){
+        $main_category =  $request->main;
+        $data = [];
+        return $sub_categories = SubCategories::where('main_category_name', $main_category)->
+        get()->
+        map(function ($item) use ($main_category){
+            $new_item['name'] = $item->name;
+            $new_item['display_name'] = $item->display_name;
+            $new_item['movies'] = Movie::where('category_name', $main_category)->where('sub_category_name', $item->name)->get([
+                'name',
+                'display_name',
+                'length',
+                'description',
+                'imdb',
+                'play_mode',
+                DB::raw("if(tumbnail = '', '', CONCAT('$this->path', tumbnail)) as thumbnail"),
+                DB::raw("if( (select count(id) from user_favourites where user_favourites.movie_name = name and user_favourites.user_id = 1) > 0, 'true', 'false') as favourite")
+            ]);
+            return $new_item;
+        });
+
+        return Movie::where('category_name', $main_category)->get();
+
 
         return view('client.component.category.category');
     }
 
 
     function FirstLoad(Request $request){
-        $name = $request->path();
+//        $name = $request->path();
         /*return auth('sanctum')->user();*/
         $feature = DB::table(Table::FEATURE_MOVIES.' as f')->
         join(Table::MOVIES.' as m' ,'f.movie_name', '=', 'm.name')->
@@ -38,7 +62,7 @@ class CategoryController extends Controller
             DB::raw("if(image_1 = '', '', CONCAT('$this->path', m.image_1)) as banner")
         ]);
         $home_movies = [];
-        $home_categories =  DB::table('sub_category')->where('main_category_name',$name)->orderBy('ordering')->limit(3)->offset(0)->get(['name', 'display_name']);
+        $home_categories =  HomeCategory::orderBy('ordering')->limit(3)->offset(0)->get(['name', 'display_name']);
         foreach($home_categories as $home){
             $home_item ['name'] =   $home->name;
             $home_item ['display_name'] =   $home->display_name;
