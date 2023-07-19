@@ -8,30 +8,18 @@
 
     <div id="carousel-menu-binding" style="top:0">
         <div id="carousel-area" class="owl-carousel d-block">
-    
+
         </div>
     </div>
 </div>
 
- 
+
 
 <div id="from-top">
     <div id="dynamic-category">
 
-
-
-
-
-
-       
-        
-    </div> 
+    </div>
 </div>
-
-
-
-
-
 
 
 @include('client.layout.sidebar')

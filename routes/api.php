@@ -45,10 +45,7 @@ Route::prefix('/home')->group(function (){
    Route::get('load-second', [HomeController::class, 'SecondLoad'])->name('home.load.second');
 });
 
-/*Route::prefix('/category')->group(function (){
-    Route::get('load-first', [CategoryController::class, 'FirstLoad'])->name('category.load.first');
- });
- */
+Route::get('/category/{main}', [CategoryController::class, 'load'])->name('get.category.movie');
 
 
 

@@ -28,7 +28,9 @@
     <script src="{{asset('client_assets/js/config.js')}}"></script>
     <title>Bong TV</title>
     <style>
-
+        .home-categories-image{
+            cursor: pointer!important;
+        }
     </style>
 </head>
 

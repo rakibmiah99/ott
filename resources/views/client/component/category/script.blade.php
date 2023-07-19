@@ -1,20 +1,27 @@
 <script>
-    client.get('{{route('category.load.first')}}')
+    client.get('{{route('get.category.movie', $category)}}')
         .then(function(response) {
             if (response.status === 200) {
                 let data = response.data;
-                // let menu = data.menu;
                 let feature = data.feature;
-                let home_categories = data.home_categories;
+                let home_categories = data.all_categories;
                 let feature_el = $('#carousel-area');
-                feature_el.empty();
-                feature.forEach(function(item) {
-                    FeatureItem(feature_el, item)
-                })
-                $("#carousel-area").owlCarousel({
-                    items: 1,
-                    autoPlay: true
-                });
+                if(feature){
+                    feature_el.empty();
+                    feature.forEach(function(item) {
+                        FeatureItem(feature_el, item)
+                    })
+                    $("#carousel-area").owlCarousel({
+                        items: 1,
+                        autoPlay: true
+                    });
+                }
+                else{
+                    $('#from-top').attr('id', '')
+                    feature_el.parent().remove();
+                    feature_el.remove()
+                }
+
 
                 //home categories
                 let home_cat_el = $('#dynamic-category');
@@ -79,7 +86,7 @@
 
 
 
-    
+
     function HomeCatItem(el, item) {
         let template = `
         <div class="home-categories">
@@ -90,7 +97,7 @@
                 item.movies.forEach(function(movie) {
                     let redirect_to_play = "{{route('client.movie')}}/" + movie.name;
                     template += `
-                    <a href="${redirect_to_play}" class="home-categories-item">
+                    <div _href="${redirect_to_play}" class="home-categories-item">
                         <div class="home-categories-image rounded-2 overflow-hidden" >
                             <img src="${movie.thumbnail}" class="img-fluidd" style="object-fit: cover; min-height: 200px;">
                         </div>
@@ -112,7 +119,7 @@
                         </div>
 
                         <div class="play-mode-banner">${movie.play_mode}</div>
-                    </a>`
+                    </div>`
                 });
 
                 template += `
@@ -156,10 +163,14 @@
     }
 
 
+    $('#dynamic-category').on('click', '.home-categories-item', function (e){
+        e.stopPropagation();
+        window.location.href = $(this).attr('_href')
+    })
 
 
-    $('#dynamic-home-category').on('click', '.favourite-btn', AddOrRemoveFavourite);
-    async function AddOrRemoveFavourite() {
+    $('#dynamic-category').on('click', '.favourite-btn', async function(e){
+        e.stopPropagation();
         let movie_name = $(this).attr('movie-name');
         let icon = "";
         let redirect_to_login = false;
@@ -190,5 +201,6 @@
             $(this).children().first().removeClass('text-warning');
         }
 
-    }
+    });
+    // async function AddOrRemoveFavourite(e)
 </script>
